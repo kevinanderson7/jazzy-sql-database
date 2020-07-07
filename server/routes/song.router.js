@@ -31,7 +31,22 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  res.sendStatus(201);
+  const songData = req.body;
+  const queryText = `INSERT INTO "songs" ("title", "song_length", "date_released")
+                    VALUES ($1, $2, $3);`;
+  pool
+    .query(queryText, [
+      songData.title,
+      songData.song_length,
+      songData.date_released,
+    ])
+    .then((dbResponse) => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;
