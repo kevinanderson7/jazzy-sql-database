@@ -16,3 +16,6 @@ VALUES ('Smells Like Teen Spirit', '2:00', '1/1/1991');
 
 INSERT INTO "songs" ("title", "song_length", "date_released")
 VALUES ('U Can''t Touch This', '2:50', '1/1/1990');
+ALTER TABLE "artists" ADD COLUMN "home_town" varchar(80);
+
+UPDATE "artists" SET "home_town" = 'Santa Fe' WHERE "id" < 12;
