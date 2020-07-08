@@ -102,7 +102,7 @@ function getSongData() {
       const listOfSongs = response;
       $('#song-name').val('');
       $('#song-length').val('');
-      $('#date-released').val();
+      $('#date-released').val('');
       $('#songTableBody').empty();
 
       for (let song of listOfSongs) {
