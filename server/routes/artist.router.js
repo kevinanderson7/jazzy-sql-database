@@ -34,10 +34,14 @@ router.post('/', (req, res) => {
   console.log(`In /artist POST with`, req.body);
 
   const artistToAdd = req.body;
-  const queryText = `INSERT INTO "artists" ("artist_name", "year_born")
-                       VALUES ($1, $2);`;
+  const queryText = `INSERT INTO "artists" ("artist_name", "year_born", "home_town")
+                       VALUES ($1, $2, $3);`;
   pool
-    .query(queryText, [artistToAdd.name, artistToAdd.born])
+    .query(queryText, [
+      artistToAdd.name,
+      artistToAdd.born,
+      artistToAdd.home_town,
+    ])
     .then((responseFromDatabase) => {
       console.log(responseFromDatabase);
       // 201 means "created"

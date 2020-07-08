@@ -18,6 +18,7 @@ function sendArtistToServer() {
     name: $('#artist-name').val(),
     // .val() will always return a string
     born: $('#artist-born').val(),
+    home_town: $('#artist-hometown').val(),
   };
   console.log(artistToSend);
   // Send the data to the server
@@ -49,12 +50,15 @@ function getArtistData() {
 
       $('#artist-name').val('');
       $('#artist-born').val('');
+      $('#artist-hometown').val('');
+
       $('#artistTableBody').empty();
       for (let artist of listOfArtists) {
         // Append each artist to the table
         $('#artistTableBody').append(`<tr>
                                             <td>${artist.artist_name}</td>
                                             <td>${artist.year_born}</td>
+                                            <td>${artist.home_town}</td>
                                           </tr>`);
       }
     })
